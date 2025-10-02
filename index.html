@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decryptors</title>
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+  <div class="imagem_left">
+    <div class="logo_box">
+      <img src="{{ url_for('static', filename='img/logoChallenge.png') }}" alt="logo">
+      <h2>Decryptors</h2>
+    </div>
+  </div>
+
+  <div class="texto_inicial_right">
+    <h1>Bem vindos</h1>
+    <p>Esta é uma ferramenta para detectar ransomware</p>
+    <button id="startBtn">Iniciar detecção</button>
+  </div>
+
+  <script>
+
+    const btnStart = document.getElementById("startBtn");
+    btnStart.addEventListener("click", () => {
+      fetch("/start")
+        .then(() => {
+          alert("Monitoramento iniciado!");
+        })
+        .catch(() => alert("Erro ao iniciar monitoramento"));
+    });
+
+    const evtSource = new EventSource("/logs");
+    evtSource.onmessage = function(event) {
+      if (event.data.trim() !== "") {
+        alert(event.data);
+      }
+    };
+  </script>
+</body>
+</html>
