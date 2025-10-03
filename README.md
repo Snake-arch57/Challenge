@@ -9,4 +9,4 @@
 # A criação de honeypots para que o ransomware "morda a isca".
 # E por último e eliminação desse processo onde o programa identifica qual é o processo que está causando essa criptografia, criação e/ou eliminação de arquivos.
 # Foi feito uma interface gráfica como pode ser visto no arquivo app.py de forma bem simples que funciona da seguinte maneira, existem dois endpoints o /start e o /logs, sendo o primeiro para iniciar a aplicação e o segundo para observar o que de fato está acontecendo.
-# Aceito melhorias de código, e formas de como testar o código de forma mais eficiente e confiável.
+
